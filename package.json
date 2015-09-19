@@ -1,0 +1,42 @@
+{
+  "name": "base-n",
+  "version": "1.0.0",
+  "description": "generate short and reversible IDs as a replacement for numerical or hex IDs",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "make test",
+    "prepush": "make prepush",
+    "githooks": "make githooks"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DonutEspresso/base-n.git"
+  },
+  "keywords": [
+    "id",
+    "base64",
+    "base10",
+    "base-n",
+    "reversible",
+    "id",
+    "shortid",
+    "tinyid"
+  ],
+  "author": "Alex Liu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DonutEspresso/base-n/issues"
+  },
+  "homepage": "https://github.com/DonutEspresso/base-n#readme",
+  "dependencies": {
+    "assert-plus": "^0.1.5"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "coveralls": "^2.11.4",
+    "eslint": "^1.4.3",
+    "istanbul": "^0.3.20",
+    "jscs": "^2.1.1",
+    "mocha": "^2.3.2"
+  }
+}
