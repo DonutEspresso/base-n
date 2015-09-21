@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "generate short and reversible IDs as a replacement for numerical or hex IDs",
   "main": "lib/index.js",
+  "bin": {
+    "codex": "./bin/cli.js"
+  },
   "scripts": {
     "test": "make test",
     "prepush": "make prepush",
@@ -28,9 +31,6 @@
     "url": "https://github.com/DonutEspresso/base-n/issues"
   },
   "homepage": "https://github.com/DonutEspresso/base-n#readme",
-  "dependencies": {
-    "assert-plus": "^0.1.5"
-  },
   "devDependencies": {
     "chai": "^3.2.0",
     "coveralls": "^2.11.4",
@@ -38,5 +38,8 @@
     "istanbul": "^0.3.20",
     "jscs": "^2.1.1",
     "mocha": "^2.3.2"
+  },
+  "dependencies": {
+    "dashdash": "^1.10.1"
   }
 }
