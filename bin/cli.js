@@ -34,7 +34,7 @@ var parser = dashdash.createParser({
     options: options
 });
 
-function showhelp(opts) {
+function showHelp(opts) {
     var help = parser.help({includeEnv: true}).trimRight();
     console.log('usage: basen [action] [value] [OPTIONS]\n\n'
             + 'action: encode | decode\n'
