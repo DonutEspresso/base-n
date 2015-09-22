@@ -73,7 +73,7 @@ describe('baseN', function() {
 
         it('should symmetric encode/decode', function(done) {
 
-            this.timeout(10000);
+            this.timeout(60000);
 
             var b64 = baseN.create({
                 max: 1000000
@@ -219,6 +219,18 @@ describe('baseN', function() {
             assert.throws(function() {
                 b64.decode('-----------');
             }, RangeError);
+        });
+
+
+        it('should throw when both max and lengh are specified in options',
+        function() {
+
+            assert.throws(function() {
+                baseN.create({
+                    max: 1000,
+                    length: 2
+                });
+            });
         });
     });
 
