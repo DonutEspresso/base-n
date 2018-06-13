@@ -4,8 +4,6 @@
 [![Build Status](https://travis-ci.org/DonutEspresso/base-n.svg?branch=master)](https://travis-ci.org/DonutEspresso/base-n)
 [![Coverage Status](https://coveralls.io/repos/DonutEspresso/base-n/badge.svg?branch=master)](https://coveralls.io/r/DonutEspresso/base-n?branch=master)
 [![Dependency Status](https://david-dm.org/DonutEspresso/base-n.svg)](https://david-dm.org/DonutEspresso/base-n)
-[![devDependency Status](https://david-dm.org/DonutEspresso/base-n/dev-status.svg)](https://david-dm.org/DonutEspresso/base-n#info=devDependencies)
-[![bitHound Score](https://www.bithound.io/github/DonutEspresso/base-n/badges/score.svg)](https://www.bithound.io/github/DonutEspresso/base-n/master)
 
 > A utility for encoding/decoding base10 integers into a URL safe base-n string
 
@@ -156,16 +154,16 @@ __Returns__: {Number} base10 integer
 To start contributing, install the git pre-push hooks:
 
 ```sh
-npm run githooks
+make githooks
 ```
 
-Before committing, lint and test your code using the included gulpfile.js:
+Before committing, lint and test your code using the included Makefile:
 ```sh
-npm run prepush
+make prepush
 ```
 
 ## License
 
-Copyright (c) 2015 Alex Liu.
+Copyright (c) 2018 Alex Liu.
 
 Licensed under the MIT license.

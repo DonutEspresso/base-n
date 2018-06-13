@@ -10,7 +10,19 @@ Thumbs.db
 
 /node_modules/
 npm-debug.log
+yarn.lock
+package-lock.json
 
-# build task results for ci
+# VIM viles #
+#############
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+# Unit Test Coverage #
+######################
 coverage/
-
+.nyc_output/

@@ -1,9 +1,9 @@
 language: node_js
 node_js:
-    - "0.10"
-    - "0.12"
-    - "4"
-    - "stable"
-after_success:
-    - make report-coverage
-
+    - "6"
+    - "lts/*"                # Active LTS release
+    - "node"                 # Latest stable release
+before_install: 'make clean'
+install: 'make'
+script: 'make coverage'
+after_success: 'make report-coverage'

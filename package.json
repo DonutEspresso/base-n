@@ -6,11 +6,6 @@
   "bin": {
     "codex": "./bin/cli.js"
   },
-  "scripts": {
-    "test": "make test",
-    "prepush": "make prepush",
-    "githooks": "make githooks"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DonutEspresso/base-n.git"
@@ -32,14 +27,13 @@
   },
   "homepage": "https://github.com/DonutEspresso/base-n#readme",
   "devDependencies": {
-    "chai": "^3.2.0",
-    "coveralls": "^2.11.4",
-    "eslint": "^1.4.3",
-    "istanbul": "^0.3.21",
-    "jscs": "^2.1.1",
-    "mocha": "^2.3.2"
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.1",
+    "eslint": "^4.19.1",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2"
   },
   "dependencies": {
-    "dashdash": "^1.10.1"
+    "dashdash": "^1.14.1"
   }
 }
