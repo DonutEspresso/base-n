@@ -222,7 +222,7 @@ describe('baseN', function() {
         });
 
 
-        it('should throw when both max and lengh are specified in options',
+        it('should throw when both max and length are specified in options',
         function() {
 
             assert.throws(function() {
@@ -234,5 +234,38 @@ describe('baseN', function() {
         });
     });
 
+    describe('Multi-character dictionary encoding', function() {
+        it('encode an int into zarith format', function() {
+            const base128 = baseN.create({
+                characters: [...Array(128).keys()].map(k => ('0' + k.toString(16)).slice(-2))
+            });
+            let z = Buffer.from(base128.encode(parseInt(64, 10)), 'hex')
+                .map((v, i) => i == 0 ? v : v ^ 0x80).reverse().toString('hex');
+            assert.equal(z, '40');
 
+            z = Buffer.from(base128.encode(parseInt(256, 10)), 'hex')
+                .map((v, i) => i == 0 ? v : v ^ 0x80).reverse().toString('hex');
+            assert.equal(z, '8002');
+
+            z = Buffer.from(base128.encode(parseInt(4096, 10)), 'hex')
+                .map((v, i) => i == 0 ? v : v ^ 0x80).reverse().toString('hex');
+            assert.equal(z, '8020');
+
+            z = Buffer.from(base128.encode(parseInt(1048576, 10)), 'hex')
+                .map((v, i) => i == 0 ? v : v ^ 0x80).reverse().toString('hex');
+            assert.equal(z, '808040');
+        });
+
+        it('decode an int from zarith format', function() {
+            const base128 = baseN.create({
+                characters: [...Array(128).keys()].map(k => ('0' + k.toString(16)).slice(-2))
+            });
+
+            let s = base128.decode(Buffer.from('20', 'hex').reverse().map((v, i) => i == 0 ? v : v & 0x7f).toString('hex'));
+            assert.equal(parseInt(s), 32);
+
+            s = base128.decode(Buffer.from('808002', 'hex').reverse().map((v, i) => i == 0 ? v : v & 0x7f).toString('hex'));
+            assert.equal(parseInt(s), 32768);
+        });
+    });
 });
