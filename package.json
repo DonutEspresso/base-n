@@ -4,7 +4,7 @@
   "description": "generate short and reversible IDs as a replacement for numerical or hex IDs",
   "main": "lib/index.js",
   "bin": {
-    "codex": "./bin/cli.js"
+    "base-n": "./bin/cli.js"
   },
   "repository": {
     "type": "git",
