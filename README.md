@@ -129,7 +129,7 @@ Create an encoder/decoder object.
 
 * `options.max` {Number} - Set maximum input integer. Mutually exclusive with `length` option.
 * `options.length` {Number} - Set maximum output length of encoded value. Mutually exclusive with `max` option.
-* `options.base` {Boolean} - Set the base-n value of the encoder. Mutually exclusive with `characters` option.
+* `options.base` {Number} - Set the base-n value of the encoder. Mutually exclusive with `characters` option.
 * `options.characters` {Boolean} - Set a custom character set. The length of the character set string becomes the base. Mutually exclusive with `base` option.
 
 __Returns__: {Object} encoder object
