@@ -41,7 +41,7 @@ var b64 = baseN.create();
 
 b64.encode(10);
 // => 'a'
-b64.encode(10);
+b64.encode(100);
 // => '1a'
 b64.encode(842673);
 // => '3dKN'
@@ -50,9 +50,9 @@ b64.encode(842673);
 To decode, you can use the same object:
 
 ```js
-b64.decode('z')
+b64.decode('z');
 // => 35
-b64.decode('zTh')
+b64.decode('zTh');
 // => 146897
 ```
 

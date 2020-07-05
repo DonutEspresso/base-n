@@ -222,7 +222,7 @@ describe('baseN', function() {
         });
 
 
-        it('should throw when both max and lengh are specified in options',
+        it('should throw when both max and length are specified in options',
         function() {
 
             assert.throws(function() {
