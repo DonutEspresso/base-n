@@ -12,6 +12,58 @@ var baseN = require('../lib');
 
 describe('baseN', function() {
 
+    describe('constructor assertions', function() {
+
+        it('should throw when characters option is not an array', function() {
+            assert.throws(function() {
+                baseN.create({
+                    characters: '123'
+                });
+            }, Error, '`characters` option must be an array of string');
+        });
+
+        it('should throw when characters option is not array of string', function() {
+            assert.throws(function() {
+                baseN.create({
+                    characters: [1, 2, 3]
+                });
+            }, Error, '`characters` option must be an array of string');
+        });
+
+        it('should throw when characters option is empty array', function() {
+            assert.throws(function() {
+                baseN.create({
+                    characters: []
+                });
+            }, Error, '`characters` option cannot be empty');
+        });
+
+        it('should throw when characters option is inconsistent length', function() {
+            assert.throws(function() {
+                baseN.create({
+                    characters: ['1', '23', '4']
+                });
+            }, Error, '`characters` options are of inconsistent length: `23` is not 1 characters long');
+        });
+
+        it('should throw when length option is not an integer', function() {
+            assert.throws(function() {
+                baseN.create({
+                    length: 'a'
+                });
+            }, Error, '`length` option must be an integer');
+        });
+
+        it('should throw when length option is not an integer', function() {
+            assert.throws(function() {
+                baseN.create({
+                    base: 'a'
+                });
+            }, Error, '`base` option must be an integer');
+        });
+    });
+
+
     describe('Javascript API', function() {
 
         it('should find correct fixed length', function() {
@@ -114,7 +166,7 @@ describe('baseN', function() {
 
             // binary tests
             var b2 = baseN.create({
-                characters: '_-?',
+                characters: ['_', '-'],
                 base: 2
             });
 
@@ -122,6 +174,36 @@ describe('baseN', function() {
             assert.equal(b2.encode(3), '--');
             assert.equal(b2.encode(8), '-___');
             assert.equal(b2.encode(9), '-__-');
+        });
+
+    });
+
+
+    describe('multi-character encoding', function() {
+
+        // create base128 instance with multi character dictionary
+        var b128 = baseN.create({
+            characters: [...Array(128).keys()]
+                            .map(k => ('0' + k.toString(16)).slice(-2))
+        });
+
+        it('encode an int with two character dictionary', function() {
+            assert.deepEqual(b128.encode(32), '20');
+            assert.deepEqual(b128.encode(64), '40');
+            assert.deepEqual(b128.encode(128), '0100');
+            assert.deepEqual(b128.encode(256), '0200');
+            assert.deepEqual(b128.encode(4096), '2000');
+            assert.deepEqual(b128.encode(1048576), '400000');
+        });
+
+
+        it('decode an int with two character dictionary', function() {
+            assert.deepEqual(b128.decode('20'), 32);
+            assert.deepEqual(b128.decode('40'), 64);
+            assert.deepEqual(b128.decode('0100'), 128);
+            assert.deepEqual(b128.decode('0200'), 256);
+            assert.deepEqual(b128.decode('2000'), 4096);
+            assert.deepEqual(b128.decode('400000'), 1048576);
         });
     });
 
@@ -147,6 +229,18 @@ describe('baseN', function() {
                 // replace all new lines in output
                 var parsedOut = stdout.replace('\n', '');
                 assert.equal(parsedOut, '10');
+                done();
+            });
+        });
+
+
+        it('should encode and decode with custom characters', function(done) {
+            var cmd = cliPath + ' encode 11 --characters=a --characters=b';
+            exec(cmd, function(err, stdout, stderr) {
+                assert.ifError(err);
+                // replace all new lines in output
+                var parsedOut = stdout.replace('\n', '');
+                assert.equal(parsedOut, 'babb');
                 done();
             });
         });

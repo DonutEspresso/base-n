@@ -64,7 +64,7 @@ characters.
 ```js
 var baseN = require('base-n');
 var b2 = baseN.create({
-    characters: '$*'
+    characters: ['$', '*']
 });
 
 b2.encode(10);
@@ -80,7 +80,7 @@ var b64 = baseN.create({
     length: 4
 });
 
-b64.encode('10');
+b64.encode(10);
 // => '000a'
 
 // You can also indirectly specify max length by specifying the maximum integer
@@ -93,6 +93,19 @@ var b64 = baseN.create({
 //    represent 4096 ('100'). Note however, that the encoder will continue to
 //    safely encode base10 values greater than 4096, so long as they can be
 //    represented by 3 characters.
+```
+
+## Multi-character dictionaries
+
+Multi-character dictionaries can be used to go beyond base64:
+
+```js
+var b128 = baseN.create({
+    characters: ['00', '01', ... '77', '7F']
+});
+
+b128.encode(256);
+// => '0200'
 ```
 
 ## Error cases
@@ -130,7 +143,7 @@ Create an encoder/decoder object.
 * `options.max` {Number} - Set maximum input integer. Mutually exclusive with `length` option.
 * `options.length` {Number} - Set maximum output length of encoded value. Mutually exclusive with `max` option.
 * `options.base` {Number} - Set the base-n value of the encoder. Mutually exclusive with `characters` option.
-* `options.characters` {Boolean} - Set a custom character set. The length of the character set string becomes the base. Mutually exclusive with `base` option.
+* `options.characters` {Array} - Custom character dictionary. The length of the array becomes the base. Multi-character dictionaries can be used. Mutually exclusive with `base` option.
 
 __Returns__: {Object} encoder object
 
