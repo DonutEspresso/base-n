@@ -26,12 +26,21 @@
     "url": "https://github.com/DonutEspresso/base-n/issues"
   },
   "homepage": "https://github.com/DonutEspresso/base-n#readme",
+  "engines": {
+    "node" : ">= 10.0.0"
+  },
   "devDependencies": {
-    "chai": "^4.1.2",
-    "coveralls": "^3.0.1",
-    "eslint": "^4.19.1",
-    "mocha": "^5.2.0",
-    "nyc": "^12.0.2"
+    "chai": "^4.2.0",
+    "conventional-changelog-angular": "^5.0.10",
+    "conventional-recommended-bump": "^6.0.9",
+    "coveralls": "^3.1.0",
+    "eslint": "^7.4.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "mocha": "^8.0.1",
+    "nyc": "^15.1.0",
+    "prettier": "^2.0.5",
+    "unleash": "^2.0.2"
   },
   "dependencies": {
     "dashdash": "^1.14.1"
