@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-/* eslint-disable no-console, no-process-exit */
+/* eslint-disable */
 
 'use strict';
 
